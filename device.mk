@@ -18,11 +18,32 @@
 
 LOCAL_PATH := device/xiaomi/evergreen
 
+# API
+PRODUCT_SHIPPING_API_LEVEL := 30
+
+# Dynamic
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+# Enable project quotas and casefolding for emulated storage without sdcardfs
+#$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
 # A/B
+ENABLE_VIRTUAL_AB := true
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+
+# A/B
+AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
     boot \
+    dtbo \
     system \
-    vendor
+    system_ext \
+    product \
+    vendor \
+    odm \
+    vbmeta \
+    vbmeta_system \
+    vbmeta_vendor
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
