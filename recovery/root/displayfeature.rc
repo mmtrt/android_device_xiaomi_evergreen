@@ -1,0 +1,5 @@
+service displayfeature /system/bin/displayfeature
+    class core
+    user root
+    group root system graphics
+    onrestart restart displayfeature
