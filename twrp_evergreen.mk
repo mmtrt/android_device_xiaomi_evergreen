@@ -1,7 +1,5 @@
 #
-# Copyright (C) 2020 The Android Open Source Project
-# Copyright (C) 2020 The TWRP Open Source Project
-# Copyright (C) 2020 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2021 The TWRP Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,12 +16,7 @@
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/embedded.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
-# Inherit from evergreen device
-$(call inherit-product, device/xiaomi/evergreen/device.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
 # Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
@@ -31,10 +24,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/twrp/config/common.mk)
 
-# Device identifier. This must come after all inclusions
+# Device specific configs
+$(call inherit-product, device/xiaomi/evergreen/device.mk)
+
+## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := evergreen
 PRODUCT_NAME := twrp_evergreen
 PRODUCT_BRAND := POCO
 PRODUCT_MODEL := 21091116AG
 PRODUCT_MANUFACTURER := Xiaomi
-PRODUCT_RELEASE_NAME := Xiaomi POCO M4 Pro 5G

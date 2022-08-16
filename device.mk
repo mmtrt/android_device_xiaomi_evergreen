@@ -1,7 +1,5 @@
 #
-# Copyright (C) 2020 The Android Open Source Project
-# Copyright (C) 2020 The TWRP Open Source Project
-# Copyright (C) 2020 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2021 The TWRP Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,8 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-LOCAL_PATH := device/xiaomi/evergreen
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 30
@@ -45,24 +41,31 @@ AB_OTA_PARTITIONS += \
     vbmeta_system \
     vbmeta_vendor
 
+PRODUCT_PACKAGES += \
+    update_engine \
+    update_engine_sideload \
+    update_verifier
+
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+    POSTINSTALL_PATH_system=system/bin/mtk_plpath_utils \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-service \
-    android.hardware.boot@1.0-impl.recovery
+    android.hardware.boot@1.1-impl.recovery
 
+# fastbootd
 PRODUCT_PACKAGES += \
-    bootctrl.mt6833 \
-    bootctrl.mt6833.recovery
+    android.hardware.fastboot@1.0-impl-mock \
+    fastbootd
+    
+# Additional target Libraries
+TARGET_RECOVERY_DEVICE_MODULES += \
+    libkeymaster4 \
+    libpuresoftkeymasterdevice
 
-PRODUCT_PACKAGES += \
-    otapreopt_script \
-    cppreopts.sh \
-    update_engine \
-    update_verifier
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so

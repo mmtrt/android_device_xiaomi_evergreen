@@ -1,24 +1,21 @@
-# mount point       fstype    device                                                                flags
-/system             ext4      system                                                                flags=display="System";backup=1;logical;
-/system_image       emmc      system                                                                flags=display="System image";backup=1;flashimg=1;logical;
-/vendor             ext4      vendor                                                                flags=display="Vendor";backup=1;logical;
-/vendor_image       emmc      vendor                                                                flags=display="Vendor image";backup=1;flashimg=1;logical;
-/product            ext4      product                                                               flags=display="Product";backup=1;logical;
-/product_image      emmc      product                                                               flags=display="Product image";backup=1;flashimg=1;logical;
-/metadata           ext4      /dev/block/by-name/metadata                                           flags=display="Metadata";
-/data               f2fs      /dev/block/by-name/userdata                                           flags=display="Data";
-/cache              ext4      /dev/block/by-name/rescue                                             flags=display="Cache";
-/persist            ext4      /dev/block/by-name/persist                                            flags=display="Persist";
-/persist_image      emmc      /dev/block/by-name/persist                                            flags=display="Persist image";backup=1;flashimg=1;
-/externdevice*      auto      auto                                                                  flags=display="External Device*";logical;
-/mt_usb*            auto      vfat                                                                  flags=display="Mt_usb*";logical;
-/persistent         emmc      /dev/block/by-name/frp                                                flags=display="Persistent";
-/misc               emmc      /dev/block/by-name/misc                                               flags=display="Misc";backup=1;flashimg=1;
-/boot               emmc      /dev/block/by-name/boot                                               flags=display="Boot";backup=1;flashimg=1;
-/vbmeta_vendor      emmc      /dev/block/by-name/vbmeta_vendor                                      flags=display="Vbmeta_vendor";
-/vbmeta_system      emmc      /dev/block/by-name/vbmeta_system                                      flags=display="Vbmeta_system";
-/dtbo               emmc      /dev/block/by-name/dtbo                                               flags=display="Dtbo";backup=1;flashimg=1;
-/otp                emmc      /dev/block/by-name/otp                                                flags=display="Otp";
-/vbmeta             emmc      /dev/block/by-name/vbmeta                                             flags=display="Vbmeta";
-/cust               ext4      /dev/block/platform/bootdevice/by-name/cust                           flags=display="Cust";
-/cust_image         emmc      /dev/block/platform/bootdevice/by-name/cust                           flags=display="Cust image";backup=1;flashimg=1;
+# Android fstab file.
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+# TODO: Add 'check' as fs_mgr_flags with data partition.
+# Currently we dont have e2fsck compiled. So fs check would failed.
+
+#<src>                                           <mnt_point>           <type>   <mnt_flags and options>                                         <fs_mgr_flags>
+system                                           /system               ext4     ro                                                              wait,logical,slotselect
+system_ext                                       /system_ext           ext4     ro                                                              wait,logical,slotselect
+product                                          /product              ext4     ro                                                              wait,logical,slotselect
+vendor                                           /vendor               ext4     ro                                                              wait,logical,slotselect
+odm                                              /odm                  ext4     ro                                                              wait,logical,slotselect
+
+# Metadata
+/dev/block/by-name/metadata                      /metadata             ext4     noatime,nosuid,nodev,discard                                    wait,check,formattable
+
+# Userdata
+/dev/block/by-name/userdata                      /data                 f2fs     noatime,nosuid,nodev,discard,noflush_merge,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,inlinecrypt wait,check,formattable,quota,reservedsize=128m,latemount,resize,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,fsverity
+
+/dev/block/by-name/misc                          /misc                 emmc     defaults                                                        defaults
