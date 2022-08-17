@@ -1,5 +1,4 @@
-# Beanpod
-import /microtrust.rc
+import /init.recovery.microtrust.rc
 
 on init
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
