@@ -150,8 +150,11 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 # Treble
 BOARD_VNDK_VERSION := current
 
+# Hardware
+BOARD_USES_MTK_HARDWARE := true
+
 # TWRP specific build flags
-#TW_DEVICE_VERSION := beta
+TW_DEVICE_VERSION := pre_alpha_build
 TW_THEME := portrait_hdpi
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.usb0/lun.%d/file
 TW_INCLUDE_RESETPROP := true
@@ -161,6 +164,9 @@ TARGET_USES_LOGD := true
 TW_Y_OFFSET := 80
 TW_H_OFFSET := -80
 TW_EXCLUDE_DEFAULT_USB_INIT := true
+TW_EXCLUDE_PYTHON := true
+TW_EXCLUDE_NANO := true
+TW_EXCLUDE_TWRPAPP := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_EXTRA_LANGUAGES := true
 TW_INCLUDE_NTFS_3G := true
