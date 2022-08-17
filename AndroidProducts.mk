@@ -17,3 +17,8 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/twrp_evergreen.mk
+
+COMMON_LUNCH_CHOICES := \
+    twrp_evergreen-user \
+    twrp_evergreen-userdebug \
+    twrp_evergreen-eng
