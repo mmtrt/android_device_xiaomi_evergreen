@@ -86,4 +86,4 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 
 # OEM otacerts
 PRODUCT_EXTRA_RECOVERY_KEYS += \
-    $(LOCAL_PATH)/recovery/root/system/etc/security/xiaomi
+    $(LOCAL_PATH)/security/xiaomi
