@@ -21,8 +21,8 @@ PRODUCT_SHIPPING_API_LEVEL := 30
 # Dynamic
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# Enable project quotas and casefolding for emulated storage without sdcardfs
-#$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+# VNDK
+PRODUCT_EXTRA_VNDK_VERSIONS := 31
 
 # A/B
 ENABLE_VIRTUAL_AB := true
@@ -60,15 +60,20 @@ AB_OTA_POSTINSTALL_CONFIG += \
 # Health HAL
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-service \
-    libhealthd.$(PRODUCT_PLATFORM)
+    android.hardware.health@2.1-service
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.1-impl.recovery \
-    android.hardware.boot@1.1-impl \
-    android.hardware.boot@1.1-mtkimpl.recovery \
-    android.hardware.boot@1.1-mtkimpl
+    android.hardware.boot@1.2-impl.recovery \
+    android.hardware.boot@1.2-impl
+
+# Soong
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
+
+# MTK PlPath Utils
+PRODUCT_PACKAGES += \
+    mtk_plpath_utils.recovery
 
 # Fastbootd
 PRODUCT_PACKAGES += \
