@@ -7,7 +7,7 @@ on fs
     install_keyring
 
 on post-fs
-    start boot-hal-1-2
+    start boot-hal-1-1
     start mtk.plpath.utils.link
 
     # Support A/B feature for EMMC and UFS boot region
