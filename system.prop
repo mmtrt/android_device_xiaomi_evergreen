@@ -14,5 +14,9 @@ ro.hardware.gatekeeper=beanpod
 # Kmsetkey
 ro.hardware.kmsetkey=beanpod
 
-# adb 
+# ADB
 ro.adb.secure=0
+ro.boot.dynamic_partitions=true
+
+# Reset allocatable space
+ro.dynamic.full_size=9125756928

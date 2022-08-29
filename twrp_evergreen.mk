@@ -22,5 +22,5 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 PRODUCT_DEVICE := evergreen
 PRODUCT_NAME := twrp_evergreen
 PRODUCT_BRAND := POCO
-PRODUCT_MODEL := 21091116AG
-PRODUCT_MANUFACTURER := xiaomi
+PRODUCT_MODEL := evergreen
+PRODUCT_MANUFACTURER := Xiaomi
