@@ -15,14 +15,14 @@
 # limitations under the License.
 #
 
+DEVICE_PATH := device/xiaomi/evergreen
+
 # API
-PRODUCT_SHIPPING_API_LEVEL := 30
+PRODUCT_SHIPPING_API_LEVEL := 31
+PRODUCT_TARGET_VNDK_VERSION := 31
 
 # Dynamic
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
-
-# Enable project quotas and casefolding for emulated storage without sdcardfs
-#$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # A/B
 ENABLE_VIRTUAL_AB := true
@@ -38,10 +38,8 @@ AB_OTA_PARTITIONS += \
     boot \
     dtbo \
     system \
-    system_ext \
     product \
     vendor \
-    odm \
     vbmeta \
     vbmeta_system \
     vbmeta_vendor
@@ -60,8 +58,7 @@ AB_OTA_POSTINSTALL_CONFIG += \
 # Health HAL
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-service \
-    libhealthd.$(PRODUCT_PLATFORM)
+    android.hardware.health@2.1-service
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
@@ -86,4 +83,4 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 
 # OEM otacerts
 PRODUCT_EXTRA_RECOVERY_KEYS += \
-    $(LOCAL_PATH)/security/xiaomi
+    $(LOCAL_PATH)/security/miui_releasekey
