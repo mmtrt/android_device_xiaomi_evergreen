@@ -21,7 +21,7 @@ ALLOW_MISSING_DEPENDENCIES := true
 # Allow putting ELF in PRODUCT_COPY_FILES (required by vibrator)
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
-DEVICE_PATH := xiaomi/evergreen
+DEVICE_PATH := device/xiaomi/evergreen
 PREBUILT_PATH := $(DEVICE_PATH)/prebuilt
 
 # Architecture
