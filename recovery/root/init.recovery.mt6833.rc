@@ -1,15 +1,9 @@
-import /init.recovery.microtrust.rc
+import /init.microtrust.rc
 
 on init
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw:/system/lib64/hw
 
-on fs
-    install_keyring
-
 on post-fs
-    start boot-hal-1-1
-    start mtk.plpath.utils.link
-
     # Support A/B feature for EMMC and UFS boot region
     wait /dev/block/mmcblk0boot0 2
     symlink /dev/block/sda /dev/block/mmcblk0boot0
@@ -29,73 +23,74 @@ on post-fs
     symlink /dev/block/platform/bootdevice/by-name/preloader_a /dev/block/by-name/preloader_ufs_a
     symlink /dev/block/platform/bootdevice/by-name/preloader_b /dev/block/by-name/preloader_ufs_b
 
+    symlink /dev/block/platform/bootdevice /dev/block/bootdevice
+
     exec u:r:update_engine:s0 root root -- /system/bin/mtk_plpath_utils
+    start mtk.plpath.utils.link
 
     symlink /dev/block/mapper/pl_a /dev/block/by-name/preloader_raw_a
     symlink /dev/block/mapper/pl_b /dev/block/by-name/preloader_raw_b
     symlink /dev/block/mapper/pl_a /dev/block/platform/bootdevice/by-name/preloader_raw_a
     symlink /dev/block/mapper/pl_b /dev/block/platform/bootdevice/by-name/preloader_raw_b
 
+on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
+    install_keyring
+
 service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
     class main
     user root
     group root system
+    disabled
     oneshot
-    disabled
-    seclabel u:r:recovery:s0
-
-service keystore_auth /system/bin/keystore_auth
-    oneshot
-    user system
-    group root
-    disabled
-    seclabel u:r:recovery:s0
-
-service keystore /system/bin/keystore /tmp/misc/keystore
-    user root
-    group root drmrpc readproc log
-    disabled
-    seclabel u:r:recovery:s0
-
-service keymaster-4-1-beanpod /system/bin/android.hardware.keymaster@4.1-service.beanpod
-    user root
-    group root drmrpc
-    oneshot    
-    disabled
     seclabel u:r:recovery:s0
 
 service gatekeeper-1-0 /system/bin/android.hardware.gatekeeper@1.0-service
+    interface android.hardware.gatekeeper@1.0::IGatekeeper default
     user root
     group root
-    oneshot
     disabled
     seclabel u:r:recovery:s0
 
-on property:hwservicemanager.ready=true
-    start teei_daemon
-    start keymaster-4-1-beanpod
+service keymaster-4-1 /system/bin/android.hardware.keymaster@4.1-service.beanpod
+    interface android.hardware.keymaster@4.0::IKeymasterDevice default
+    interface android.hardware.keymaster@4.1::IKeymasterDevice default
+    user root
+    group root drmrpc
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+on property:vendor.sys.listener.registered=true
+    start gatekeeper-1-0
+    start keymaster-4-1
     start gatekeeper-1-0
 
 on property:ro.crypto.state=unsupported
     stop teei_daemon
-    stop keymaster-4-1-beanpod
+    stop keymaster-4-1
     stop gatekeeper-1-0
-    stop servicemanager
-    stop hwservicemanager
-
+    
 on property:ro.crypto.state=unencrypted
-    stop teei_daemon    
-    stop keymaster-4-1-beanpod
+    stop teei_daemon
+    stop keymaster-4-1
     stop gatekeeper-1-0
-    stop servicemanager
-    stop hwservicemanager
-
-on property:twrp.decrypt.done=true
-    stop teei_daemon  
-    stop keymaster-4-1-beanpod
-    stop gatekeeper-1-0   
-    stop servicemanager
-    stop hwservicemanager
-
+        
+on property:twrp.all.users.decrypted=true
+    stop teei_daemon
+    stop keymaster-4-0
+    stop gatekeeper-1-0
+   
 on boot
+    start boot-hal-1-2
     start health-hal-2-1
+    start vibrator-evergreen
+
+# Fix flashlight on orangefox
+on property:ro.orangefox.boot=1
+    mkdir /tmp/flashlight
+    write /tmp/flashlight/max_brightness "208"
+    symlink /sys/devices/platform/flashlights_mt6360/torch_brightness /tmp/flashlight/brightness
+
+# Enable DT2W
+on post-fs
+    write /sys/devices/platform/11007000.i2c0/i2c-0/0-0038/fts_gesture_mode "1"

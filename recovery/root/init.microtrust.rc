@@ -23,9 +23,8 @@ service teei_daemon /system/bin/teei_daemon \
     -t 09010000000000000000000000000000
     user root
     group root
-    seclabel u:r:recovery:s0
     disabled
-   # oneshot
+    seclabel u:r:recovery:s0
 
 on boot
     chown system system /sys/bus/platform/devices/utos/dcih_notify_test
@@ -111,7 +110,7 @@ on load_persist_props_action
     write /proc/bootprof "start teei cfg end (on load_persist_props_action)"
 
 on property:vold.decrypt=trigger_restart_framework
-    write /proc/bootprof "start teei cfg (on trigger_restart_framework)"
+    write /proc/bootprof "start teei cfg (on vold.decrypt=trigger_restart_framework)"
     mkdir /data/vendor/thh
     mkdir /data/vendor/thh/system
     mkdir /data/vendor/thh/tee_00
@@ -183,7 +182,7 @@ on property:vold.decrypt=trigger_restart_framework
     chmod 0771 /data/vendor/key_provisioning
     chown system system /data/vendor/key_provisioning
     restorecon_recursive /data/vendor/thh
-    write /proc/bootprof "start teei cfg end (on trigger_restart_framework)"
+    write /proc/bootprof "start teei cfg end (on vold.decrypt=trigger_restart_framework)"
 
 on post-fs
     # Set /mnt/vendor/persist/rpmb
@@ -230,12 +229,9 @@ on fs
     chown system system /dev/emmcrpmb0
     chown system system /dev/utr_tui
     chmod 0660 /dev/utr_tui
-    enable beanpod_check_keybox_service
-    enable vendor.keymaster-4-1-beanpod
     write /proc/bootprof "start teei_daemon (on fs)"
     start teei_daemon
     write /proc/bootprof "start teei_daemon end (on fs)"
-    setprop ro.hardware.gatekeeper beanpod
 
 on property:vendor.crypto.fake_encrypt=1 && property:vold.post_fs_data_done=1
     setprop vendor.soter.teei.crypto.state unencrypted
