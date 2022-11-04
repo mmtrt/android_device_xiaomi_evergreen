@@ -67,6 +67,13 @@ service keymaster-4-1-beanpod /system/bin/android.hardware.keymaster@4.1-service
     disabled
     seclabel u:r:recovery:s0
 
+service unified-script /system/bin/unified-script.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
 service gatekeeper-1-0 /system/bin/android.hardware.gatekeeper@1.0-service
     user root
     group root
@@ -102,3 +109,4 @@ on property:twrp.decrypt.done=true
 
 on boot
     start health-hal-2-1
+    start unified-script
