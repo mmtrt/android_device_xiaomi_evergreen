@@ -25,11 +25,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 $(call inherit-product, device/xiaomi/evergreen/device.mk)
 
 # Inherit some common TWRP stuff
-$(call inherit-product, vendor/twrp/config/common.mk)
+$(call inherit-product, vendor/pb/config/common.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := evergreen
-PRODUCT_NAME := twrp_evergreen
+PRODUCT_NAME := omni_evergreen
 PRODUCT_BRAND := POCO
 PRODUCT_MODEL := 21091116AG
 PRODUCT_MANUFACTURER := Xiaomi

@@ -16,9 +16,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_evergreen.mk
+    $(LOCAL_DIR)/omni_evergreen.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp_evergreen-user \
-    twrp_evergreen-userdebug \
-    twrp_evergreen-eng
+    omni_evergreen-user \
+    omni_evergreen-userdebug \
+    omni_evergreen-eng
