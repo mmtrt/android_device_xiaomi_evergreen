@@ -56,6 +56,13 @@ service keymaster-4-1 /system/bin/android.hardware.keymaster@4.1-service.beanpod
     interface android.hardware.keymaster@4.1::IKeymasterDevice default
     user root
     group root drmrpc
+    oneshot    
+    disabled
+    seclabel u:r:recovery:s0
+
+service unified-script /system/bin/unified-script.sh
+    user root
+    group root
     disabled
     oneshot
     seclabel u:r:recovery:s0
@@ -84,6 +91,7 @@ on boot
     start boot-hal-1-2
     start health-hal-2-1
     start vibrator-evergreen
+    start unified-script
 
 # Fix flashlight on orangefox
 on property:ro.orangefox.boot=1
