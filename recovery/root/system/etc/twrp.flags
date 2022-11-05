@@ -26,7 +26,6 @@
 /protect_s		ext4		/dev/block/platform/bootdevice/by-name/protect2		flags=display="Protect_s"
 /nvdata			ext4		/dev/block/platform/bootdevice/by-name/nvdata		flags=display="Nvdata"
 /nvcfg			ext4		/dev/block/platform/bootdevice/by-name/nvcfg		flags=display="Nvcfg"
-/rescue			ext4		/dev/block/platform/bootdevice/by-name/rescue		flags=display="Rescue"
 
 /persistent		emmc		/dev/block/platform/bootdevice/by-name/frp		flags=display="Persistent"
 /nvram			emmc		/dev/block/platform/bootdevice/by-name/nvram		flags=display="Nvram"
