@@ -90,7 +90,6 @@ on property:twrp.all.users.decrypted=true
 on boot
     start boot-hal-1-2
     start health-hal-2-1
-    start vibrator-evergreen
     start unified-script
 
 # Fix flashlight on orangefox
