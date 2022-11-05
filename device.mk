@@ -20,14 +20,25 @@ LOCAL_PATH := device/xiaomi/evergreen
 # A/B
 AB_OTA_PARTITIONS += \
     boot \
+    dpm \
     dtbo \
+    gz \
     lk \
+    logo \
+    mcupm \
+    md1img \
+    pi_img \
     preloader \
     product \
+    scp \
+    spmfw \
+    sspm \
     system \
+    tee \
     vbmeta \
     vbmeta_system \
     vbmeta_vendor \
+    vendor
     vendor \
     vendor_boot
     
