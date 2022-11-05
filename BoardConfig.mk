@@ -169,6 +169,13 @@ TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_INCLUDE_REPACKTOOLS := true
 TW_NO_FASTBOOT_BOOT := true
 
+ifneq ($(OF_HIDE_NOTCH),1)
+    # Configure Status bar icons for regular TWRP builds only
+    TW_CUSTOM_CLOCK_POS := 40
+    TW_CUSTOM_CPU_POS := 605
+    TW_STATUS_ICONS_ALIGN := center
+endif
+
 # Debug
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
