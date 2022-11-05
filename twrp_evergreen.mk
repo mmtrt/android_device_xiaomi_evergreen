@@ -30,3 +30,4 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := evergreen
 PRODUCT_NAME := twrp_evergreen
+PRODUCT_BRAND := POCO
