@@ -65,13 +65,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
 
-PRODUCT_PACKAGES += \
-    android.hardware.vibrator-service.evergreen
-
-# Copy the vibrator into recovery image
-PRODUCT_COPY_FILES += \
-	$(OUT_DIR)/target/product/evergreen/system/bin/hw/android.hardware.vibrator-service.evergreen:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/hw/android.hardware.vibrator-service.evergreen
-
 # Fastbootd
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.0-impl-mock \
