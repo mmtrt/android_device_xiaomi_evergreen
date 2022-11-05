@@ -50,7 +50,7 @@ TARGET_OTA_ASSERT_DEVICE := evergreen,evergo,opal
 # Kernel
 BOARD_KERNEL_CMDLINE := \
 	bootopt=64S3,32N2,64N2 \
-	androidboot.force_normal_boot=1
+	twrpfastboot=0
 
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -78,7 +78,6 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 
 # Partitions configs
-BOARD_USES_RECOVERY_AS_BOOT := true
 TARGET_NO_RECOVERY := true
 BOARD_USES_METADATA_PARTITION := true
 
@@ -133,6 +132,7 @@ TW_INCLUDE_REPACKTOOLS := true
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TARGET_USES_MKE2FS := true
+TW_NO_FASTBOOT_BOOT := true
 
 # Device config
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
