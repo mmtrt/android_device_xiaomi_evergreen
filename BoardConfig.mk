@@ -153,7 +153,7 @@ TW_EXCLUDE_DEFAULT_USB_INIT := true
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 TW_OVERRIDE_SYSTEM_PROPS := \
-    "ro.build.date.utc;ro.build.product;ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental;ro.product.device=ro.product.system.device;ro.product.model=ro.product.system.model;ro.product.name=ro.product.system.name"
+    "ro.build.date.utc;ro.build.flavor;ro.bootimage.build.fingerprint=ro.system.build.fingerprint;ro.bootimage.build.version.incremental;ro.bootimage.build.version.release;ro.bootimage.build.version.release_or_codename;ro.product.build.fingerprint=ro.system.build.fingerprint;ro.product.build.version.incrementalro.product.build.version.release;ro.product.build.version.release_or_codename;ro.build.description=ro.system.build.fingerprint;ro.build.display.id=ro.system.build.fingerprint;ro.build.fingerprint=ro.system.build.fingerprint;ro.odm.build.fingerprint=ro.system.build.fingerprint;ro.odm.build.version.incremental;ro.odm.build.version.release;ro.odm.build.version.release_or_codename;ro.system.build.fingerprint=ro.system.build.fingerprint;ro.system.build.version.incremental;ro.system.build.version.release;ro.system.build.version.release_or_codename;ro.system_ext.build.fingerprint=ro.system.build.fingerprint;ro.system_ext.build.version.incremental;ro.system_ext.build.version.release;ro.system_ext.build.version.release_or_codename;ro.vendor.build.fingerprint=ro.system.build.fingerprint;ro.vendor.build.version.incremental;ro.vendor.build.version.release;ro.vendor.build.version.release_or_codename"
 
 # Torch
 PB_TORCH_PATH := "/sys/class/leds/led:torch_0"
