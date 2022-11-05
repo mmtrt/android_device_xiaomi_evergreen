@@ -153,6 +153,13 @@ TW_EXCLUDE_DEFAULT_USB_INIT := true
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 
+# Torch
+PB_TORCH_PATH := "/sys/class/leds/led:torch_0"
+
+# PBRP specific build flags
+PB_DISABLE_DEFAULT_DM_VERITY := true
+PB_DISABLE_DEFAULT_TREBLE_COMP := true
+
 # ifneq ($(OF_HIDE_NOTCH),1)
 #     # Configure Status bar icons for regular TWRP builds only
 #     TW_CUSTOM_CLOCK_POS := 40
