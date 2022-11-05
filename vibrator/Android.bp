@@ -1,0 +1,31 @@
+cc_library_static {
+    name: "libvibratorevergreen",
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "android.hardware.vibrator-V2-ndk_platform",
+    ],
+    export_include_dirs: ["include"],
+    srcs: ["Vibrator.cpp"],
+    visibility: [
+        ":__subpackages__",
+        "//hardware/interfaces/tests/extension/vibrator:__subpackages__",
+    ],
+}
+
+cc_binary {
+    name: "android.hardware.vibrator-service.evergreen",
+    relative_install_path: "hw",
+    init_rc: ["vibrator-evergreen.rc"],
+    vintf_fragments: ["vibrator-evergreen.xml"],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "android.hardware.vibrator-V2-ndk_platform",
+    ],
+    static_libs: [
+        "libvibratorevergreen",
+    ],
+    srcs: ["main.cpp"],
+}
+

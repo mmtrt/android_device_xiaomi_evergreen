@@ -67,6 +67,12 @@ service unified-script /system/bin/unified-script.sh
     oneshot
     seclabel u:r:recovery:s0
 
+service vibrator-evergreen /system/bin/hw/android.hardware.vibrator-service.evergreen
+    user root
+    group root
+    class hal
+    seclabel u:r:recovery:s0
+
 on property:vendor.sys.listener.registered=true
     start gatekeeper-1-0
     start keymaster-4-1
