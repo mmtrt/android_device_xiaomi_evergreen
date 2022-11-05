@@ -153,12 +153,12 @@ TW_EXCLUDE_DEFAULT_USB_INIT := true
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 
-ifneq ($(OF_HIDE_NOTCH),1)
-    # Configure Status bar icons for regular TWRP builds only
-    TW_CUSTOM_CLOCK_POS := 40
-    TW_CUSTOM_CPU_POS := 605
-    TW_STATUS_ICONS_ALIGN := center
-endif
+# ifneq ($(OF_HIDE_NOTCH),1)
+#     # Configure Status bar icons for regular TWRP builds only
+#     TW_CUSTOM_CLOCK_POS := 40
+#     TW_CUSTOM_CPU_POS := 605
+#     TW_STATUS_ICONS_ALIGN := center
+# endif
 
 # Decryption
 TW_INCLUDE_CRYPTO := true
