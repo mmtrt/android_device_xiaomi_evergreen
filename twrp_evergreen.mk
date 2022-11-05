@@ -30,7 +30,3 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := evergreen
 PRODUCT_NAME := twrp_evergreen
-PRODUCT_BRAND := POCO
-PRODUCT_MODEL := 21091116AG
-PRODUCT_MANUFACTURER := Xiaomi
-PRODUCT_RELEASE_NAME := POCO M4 Pro 5G
