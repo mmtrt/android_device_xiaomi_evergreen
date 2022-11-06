@@ -145,6 +145,8 @@ TW_NO_FASTBOOT_BOOT := true
 
 # Device config
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TW_MAX_BRIGHTNESS := 2047
+TW_DEFAULT_BRIGHTNESS := 1200
 TW_FRAMERATE := 60
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_SUPPORT_INPUT_AIDL_HAPTICS := true
@@ -169,4 +171,26 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster41.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+
+#SHRP
+SHRP_DEVICE_CODE := evergreen
+SHRP_PATH := device/xiaomi/evergreen
+SHRP_MAINTAINER := mmtrt
+SHRP_DEVICE_TYPE := A/B
+SHRP_REC := /dev/block/platform/bootdevice/by-name/boot
+SHRP_EDL_MODE := 0
+SHRP_FLASH := 0
+SHRP_REC_TYPE := Normal
+SHRP_INTERNAL := /sdcard
+SHRP_EXTERNAL := /external_sd
+SHRP_OTG := /usb_otg
+SHRP_AB := true
+SHRP_NOTCH := true
+SHRP_EXPRESS_USE_DATA := true
+SHRP_DARK := true
+
+# SHRP Addons
+SHRP_SKIP_DEFAULT_ADDON_1 := true
+SHRP_SKIP_DEFAULT_ADDON_2 := true
+INC_IN_REC_MAGISK := true
 
