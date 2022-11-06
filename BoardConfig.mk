@@ -180,7 +180,8 @@ SHRP_MAINTAINER := mmtrt
 SHRP_DEVICE_TYPE := A/B
 SHRP_REC := /dev/block/platform/bootdevice/by-name/boot
 SHRP_EDL_MODE := 0
-SHRP_FLASH := 0
+SHRP_FLASH := 1
+SHRP_FLASH_MAX_BRIGHTNESS := 1
 SHRP_REC_TYPE := Normal
 SHRP_INTERNAL := /sdcard
 SHRP_EXTERNAL := /external_sd
@@ -189,6 +190,8 @@ SHRP_AB := true
 SHRP_NOTCH := true
 SHRP_EXPRESS_USE_DATA := true
 SHRP_DARK := true
+SHRP_CUSTOM_FLASHLIGHT := true
+SHRP_FONP_1 := /sys/devices/platform/flashlights_mt6360/torch_brightness
 
 # SHRP Addons
 SHRP_SKIP_DEFAULT_ADDON_1 := true
