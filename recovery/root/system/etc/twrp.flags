@@ -3,9 +3,16 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 #<mnt_point>        <type>    <device>                                                              <mnt_flags and options>
-/system             ext4     system                               flags=backup=1;display=System;logical;slotselect;flashimg=1;wipeingui
-/vendor             ext4     vendor                               flags=backup=1;display=Vendor;logical;slotselect;flashimg=1;wipeingui
-/product            ext4     product                              flags=backup=1;display=Product;logical;slotselect;flashimg=1;wipeingui
+/system_root    ext4            /dev/block/bootdevice/by-name/system                    flags=display="System";logical;slotselect;backup=0;wipeingui
+/product        ext4            /dev/block/bootdevice/by-name/product                  flags=display="Product";logical;slotselect;backup=0;wipeingui
+/vendor         ext4            /dev/block/bootdevice/by-name/vendor                    flags=display="Vendor";logical;slotselect;backup=0;wipeingui
+
+/vendor_image   emmc            /dev/block/bootdevice/by-name/vendor                    flags=display="Vendor_image";backup=1;flashimg=1
+/product_image  emmc            /dev/block/bootdevice/by-name/product                   flags=display="Product_image";backup=1;flashimg=1
+/system_image   emmc            /dev/block/bootdevice/by-name/system                    flags=display="System_image";backup=1;flashimg=1
+
+/super_image    emmc            /dev/block/platform/bootdevice/by-name/super            flags=display="Super Image";backup=0;flashimg=1
+
 /metadata           ext4      /dev/block/by-name/metadata                            flags=display="Metadata";backup=1
 /data               f2fs      /dev/block/by-name/userdata                            flags=fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption
 /boot               emmc      /dev/block/by-name/boot                                flags=display="Boot";slotselect;backup=1;flashimg=1
