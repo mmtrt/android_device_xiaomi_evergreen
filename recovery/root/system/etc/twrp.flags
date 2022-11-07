@@ -20,6 +20,8 @@
 /cache		          ext4		  /dev/block/platform/bootdevice/by-name/rescue		         flags=display="Cache"
 /dtbo               emmc      /dev/block/platform/bootdevice/by-name/dtbo              flags=display="DTBO";backup=1
 
+/vendor_boot        emmc      /dev/block/by-name/vendor_boot                                        flags=display="vendor_boot";slotselect;backup=1;flashimg=1
+
 /storage		        f2fs		  /data/media/0						                                 flags=display="Internal Storage";backup=1;usermrf;fsflags="bind";removable
 
 /vbmeta             emmc      /dev/block/platform/bootdevice/by-name/vbmeta            flags=display="VBMeta";backup=1;slotselect
