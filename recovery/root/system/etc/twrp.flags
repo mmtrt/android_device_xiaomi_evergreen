@@ -14,9 +14,6 @@
 
 /super_image        emmc      /dev/block/platform/bootdevice/by-name/super             flags=display="Super Image";backup=0;flashimg=1
 
-/persist_image      emmc      /dev/block/platform/bootdevice/by-name/persist           flags=display="Persist Image";backup=1;flashimg=1
-/cust_image		      emmc		  /dev/block/platform/bootdevice/by-name/cust	             flags=display="Cust Image";backup=1;flashimg=1
-
 /metadata           ext4      /dev/block/platform/bootdevice/by-name/metadata          flags=display="Metadata";backup=1
 /data               f2fs      /dev/block/platform/bootdevice/by-name/userdata          flags=fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption
 /boot               emmc      /dev/block/platform/bootdevice/by-name/boot              flags=display="Boot";backup=1;flashimg=1;slotselect
