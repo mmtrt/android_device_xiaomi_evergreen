@@ -36,7 +36,7 @@
 /para               emmc      /dev/block/platform/bootdevice/by-name/para              flags=display="Para"
 /persist            ext4      /dev/block/platform/bootdevice/by-name/persist           flags=display="Persist"
 
-/protect_f          ext4      /dev/block/platform/bootdevice/by-name//protect1         flags=display="Protect_f"
+/protect_f          ext4      /dev/block/platform/bootdevice/by-name/protect1         flags=display="Protect_f"
 /protect_s          ext4      /dev/block/platform/bootdevice/by-name/protect2          flags=display="Protect_s"
 /nvdata             ext4      /dev/block/platform/bootdevice/by-name/nvdata            flags=display="Nvdata"
 /nvcfg              ext4      /dev/block/platform/bootdevice/by-name/nvcfg             flags=display="Nvcfg"
@@ -54,7 +54,7 @@
 /tee1               emmc      /dev/block/platform/bootdevice/by-name/tee1              flags=display="Tee1"
 /tee2               emmc      /dev/block/platform/bootdevice/by-name/tee2              flags=display="Tee2"
 /mcupm_1            emmc      /dev/block/platform/bootdevice/by-name/mcupm_1           flags=display="Mcupm_1"
-/mcupm_2            emmc      /dev/block/platform/bootdevice/by-name/mcupm_2           flags=display="Mmcupm_2"
+/mcupm_2            emmc      /dev/block/platform/bootdevice/by-name/mcupm_2           flags=display="Mcupm_2"
 /efuse              emmc      /dev/block/platform/bootdevice/by-name/efuse             flags=display="Efuse"
 /scp1               emmc      /dev/block/platform/bootdevice/by-name/scp1              flags=display="Scp1"
 /scp2               emmc      /dev/block/platform/bootdevice/by-name/scp2              flags=display="Scp2"
