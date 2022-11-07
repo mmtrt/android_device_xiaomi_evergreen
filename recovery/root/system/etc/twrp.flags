@@ -25,14 +25,14 @@
 
 /storage		        f2fs		  /data/media/0						                                 flags=display="Internal Storage";backup=1;usermrf;fsflags="bind";removable
 
-/vbmeta             emmc      /dev/block/platform/bootdevice/by-name/vbmeta            flags=display="VBMeta";backup=1;flashimg=1;slotselect
-/vbmeta_vendor      emmc      /dev/block/platform/bootdevice/by-name/vbmeta_vendor     flags=display="VBMeta Vendor";backup=1;flashimg=1;slotselect
-/vbmeta_system      emmc      /dev/block/platform/bootdevice/by-name/vbmeta_system     flags=display="VBMeta System";backup=1;flashimg=1;slotselect
+/vbmeta             emmc      /dev/block/platform/bootdevice/by-name/vbmeta            flags=display="VBMeta";backup=1;slotselect
+/vbmeta_vendor      emmc      /dev/block/platform/bootdevice/by-name/vbmeta_vendor     flags=display="VBMeta Vendor";backup=1;slotselect
+/vbmeta_system      emmc      /dev/block/platform/bootdevice/by-name/vbmeta_system     flags=display="VBMeta System";backup=1;slotselect
 
 /boot_para          emmc      /dev/block/platform/bootdevice/by-name/boot_para         flags=display="Boot Para"
-/logo               emmc      /dev/block/platform/bootdevice/by-name/logo              flags=display="Logo";backup=1;flashimg=1;slotselect
-/logo2              emmc      /dev/block/platform/bootdevice/by-name/logo2	           flags=display="Logo2";backup=1;flashimg=1;slotselect
-/misc               emmc      /dev/block/platform/bootdevice/by-name/misc              flags=display="Misc";backup=1;flashimg=1;slotselect
+/logo               emmc      /dev/block/platform/bootdevice/by-name/logo              flags=display="Logo";backup=1;slotselect
+/logo2              emmc      /dev/block/platform/bootdevice/by-name/logo2	           flags=display="Logo2";backup=1;slotselect
+/misc               emmc      /dev/block/platform/bootdevice/by-name/misc              flags=display="Misc";backup=1;slotselect
 /para               emmc      /dev/block/platform/bootdevice/by-name/para              flags=display="Para"
 /persist            ext4      /dev/block/platform/bootdevice/by-name/persist           flags=display="Persist"
 
