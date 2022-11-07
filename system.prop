@@ -20,3 +20,6 @@ ro.hardware.kmsetkey=beanpod
 
 # adb 
 ro.adb.secure=0
+
+# HideReflashTWRP
+ro.twrp.vendor_boot=true
