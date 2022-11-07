@@ -14,29 +14,28 @@
 
 /super_image        emmc      /dev/block/platform/bootdevice/by-name/super             flags=display="Super Image";backup=0;flashimg=1
 
-/persist_image      emmc      /dev/block/platform/bootdevice/by-name/persist           flags=display="Persist Image";backup=1;flashimg=1
-/cust_image		      emmc		  /dev/block/platform/bootdevice/by-name/cust	             flags=display="Cust Image";backup=1;flashimg=1
-
 /metadata           ext4      /dev/block/platform/bootdevice/by-name/metadata          flags=display="Metadata";backup=1
 /data               f2fs      /dev/block/platform/bootdevice/by-name/userdata          flags=fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption
 /boot               emmc      /dev/block/platform/bootdevice/by-name/boot              flags=display="Boot";backup=1;flashimg=1;slotselect
 /cache		          ext4		  /dev/block/platform/bootdevice/by-name/rescue		         flags=display="Cache"
 /dtbo               emmc      /dev/block/platform/bootdevice/by-name/dtbo              flags=display="DTBO";backup=1
 
+/vendor_boot        emmc      /dev/block/by-name/vendor_boot                                        flags=display="vendor_boot";slotselect;backup=1;flashimg=1
+
 /storage		        f2fs		  /data/media/0						                                 flags=display="Internal Storage";backup=1;usermrf;fsflags="bind";removable
 
-/vbmeta             emmc      /dev/block/platform/bootdevice/by-name/vbmeta            flags=display="VBMeta";backup=1;flashimg=1;slotselect
-/vbmeta_vendor      emmc      /dev/block/platform/bootdevice/by-name/vbmeta_vendor     flags=display="VBMeta Vendor";backup=1;flashimg=1;slotselect
-/vbmeta_system      emmc      /dev/block/platform/bootdevice/by-name/vbmeta_system     flags=display="VBMeta System";backup=1;flashimg=1;slotselect
+/vbmeta             emmc      /dev/block/platform/bootdevice/by-name/vbmeta            flags=display="VBMeta";backup=1;slotselect
+/vbmeta_vendor      emmc      /dev/block/platform/bootdevice/by-name/vbmeta_vendor     flags=display="VBMeta Vendor";backup=1;slotselect
+/vbmeta_system      emmc      /dev/block/platform/bootdevice/by-name/vbmeta_system     flags=display="VBMeta System";backup=1;slotselect
 
 /boot_para          emmc      /dev/block/platform/bootdevice/by-name/boot_para         flags=display="Boot Para"
-/logo               emmc      /dev/block/platform/bootdevice/by-name/logo              flags=display="Logo";backup=1;flashimg=1;slotselect
-/logo2              emmc      /dev/block/platform/bootdevice/by-name/logo2	           flags=display="Logo2";backup=1;flashimg=1;slotselect
-/misc               emmc      /dev/block/platform/bootdevice/by-name/misc              flags=display="Misc";backup=1;flashimg=1;slotselect
+/logo               emmc      /dev/block/platform/bootdevice/by-name/logo              flags=display="Logo";backup=1;slotselect
+/logo2              emmc      /dev/block/platform/bootdevice/by-name/logo2	           flags=display="Logo2";backup=1;slotselect
+/misc               emmc      /dev/block/platform/bootdevice/by-name/misc              flags=display="Misc";backup=1;slotselect
 /para               emmc      /dev/block/platform/bootdevice/by-name/para              flags=display="Para"
 /persist            ext4      /dev/block/platform/bootdevice/by-name/persist           flags=display="Persist"
 
-/protect_f          ext4      /dev/block/platform/bootdevice/by-name//protect1         flags=display="Protect_f"
+/protect_f          ext4      /dev/block/platform/bootdevice/by-name/protect1         flags=display="Protect_f"
 /protect_s          ext4      /dev/block/platform/bootdevice/by-name/protect2          flags=display="Protect_s"
 /nvdata             ext4      /dev/block/platform/bootdevice/by-name/nvdata            flags=display="Nvdata"
 /nvcfg              ext4      /dev/block/platform/bootdevice/by-name/nvcfg             flags=display="Nvcfg"
@@ -54,7 +53,7 @@
 /tee1               emmc      /dev/block/platform/bootdevice/by-name/tee1              flags=display="Tee1"
 /tee2               emmc      /dev/block/platform/bootdevice/by-name/tee2              flags=display="Tee2"
 /mcupm_1            emmc      /dev/block/platform/bootdevice/by-name/mcupm_1           flags=display="Mcupm_1"
-/mcupm_2            emmc      /dev/block/platform/bootdevice/by-name/mcupm_2           flags=display="Mmcupm_2"
+/mcupm_2            emmc      /dev/block/platform/bootdevice/by-name/mcupm_2           flags=display="Mcupm_2"
 /efuse              emmc      /dev/block/platform/bootdevice/by-name/efuse             flags=display="Efuse"
 /scp1               emmc      /dev/block/platform/bootdevice/by-name/scp1              flags=display="Scp1"
 /scp2               emmc      /dev/block/platform/bootdevice/by-name/scp2              flags=display="Scp2"
