@@ -191,7 +191,7 @@ SHRP_NOTCH := true
 SHRP_EXPRESS_USE_DATA := true
 SHRP_DARK := true
 SHRP_CUSTOM_FLASHLIGHT := true
-SHRP_FONP_1 := /sys/bus/platform/drivers/flashlights-mt6360/flashlights_mt6360/torch_brightness
+SHRP_FONP_1 := "/sys/bus/platform/drivers/flashlights-mt6360/flashlights_mt6360/torch_brightness:torch_0/brightness"
 SHRP_FLASH_MAX_BRIGHTNESS := 1
 
 # SHRP Addons
