@@ -5,15 +5,9 @@
 #<mnt_point>       <type>    <device>                                                 <mnt_flags and options>
 
 # Logical
-/system            ext4      /dev/block/bootdevice/by-name/system                     flags=display="System";logical;slotselect;backup=1
-/product           ext4      /dev/block/bootdevice/by-name/product                    flags=display="Product";logical;slotselect;backup=1
-/vendor            ext4      /dev/block/bootdevice/by-name/vendor                     flags=display="Vendor";logical;slotselect;backup=1
-
-# Image
-/vendor_image      emmc      /dev/block/bootdevice/by-name/vendor                     flags=display="Vendor Image";backup=1;flashimg=1
-/product_image     emmc      /dev/block/bootdevice/by-name/product                    flags=display="Product Image";backup=1;flashimg=1
-/system_image      emmc      /dev/block/bootdevice/by-name/system                     flags=display="System Image";backup=1;flashimg=1
-/super_image       emmc      /dev/block/platform/bootdevice/by-name/super             flags=display="Super Image";backup=0;flashimg=1
+/system_root        ext4      /dev/block/bootdevice/by-name/system                     flags=display="System";logical;slotselect;backup=1;flashimg=1
+/product            ext4      /dev/block/bootdevice/by-name/product                    flags=display="Product";logical;slotselect;backup=1;flashimg=1
+/vendor             ext4      /dev/block/bootdevice/by-name/vendor                     flags=display="Vendor";logical;slotselect;backup=1;flashimg=1
 
 # Physical
 /boot_para          emmc      /dev/block/platform/bootdevice/by-name/boot_para         flags=display="Boot_para"
@@ -76,8 +70,8 @@
 /vendor_boot_b      emmc      /dev/block/platform/bootdevice/by-name/vendor_boot_b     flags=display="Vendor_boot_b"
 
 # Internal Storage
-/storage           f2fs      /data/media/0                                            flags=display="Internal Storage";backup=1;usermrf;fsflags="bind";removable
+/storage            f2fs      /data/media/0                                            flags=display="Internal Storage";backup=1;usermrf;fsflags="bind";removable
 
 # External Storage
-/sdcard1           auto      /dev/block/mmcblk0p1      /dev/block/mmcblk0             flags=display="MicroSD Card";storage;wipeingui;removable
-/usb_otg           auto      /dev/block/sda1           /dev/block/sdd                 flags=display="USB-Storage";storage;wipeingui;removable
+/sdcard1            auto      /dev/block/mmcblk0p1      /dev/block/mmcblk0             flags=display="MicroSD Card";storage;wipeingui;removable
+/usb_otg            auto      /dev/block/sda1           /dev/block/sdd                 flags=display="USB-Storage";storage;wipeingui;removable
