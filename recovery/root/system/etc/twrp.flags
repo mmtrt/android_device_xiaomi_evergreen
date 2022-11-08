@@ -9,6 +9,11 @@
 /product            ext4      /dev/block/bootdevice/by-name/product                    flags=display="Product";logical;slotselect;backup=1;flashimg=1
 /vendor             ext4      /dev/block/bootdevice/by-name/vendor                     flags=display="Vendor";logical;slotselect;backup=1;flashimg=1
 
+# Image
+/vendor_image      emmc      /dev/block/bootdevice/by-name/vendor                     flags=display="Vendor Image";backup=1;flashimg=1
+/product_image     emmc      /dev/block/bootdevice/by-name/product                    flags=display="Product Image";backup=1;flashimg=1
+/system_image      emmc      /dev/block/bootdevice/by-name/system                     flags=display="System Image";backup=1;flashimg=1
+
 # Physical
 /boot_para          emmc      /dev/block/platform/bootdevice/by-name/boot_para         flags=display="Boot_para"
 /countrycode        emmc      /dev/block/platform/bootdevice/by-name/countrycode       flags=display="Countrycode"
