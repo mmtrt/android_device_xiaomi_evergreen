@@ -183,10 +183,10 @@ SHRP_DEVICE_CODE := evergreen
 SHRP_PATH := device/xiaomi/evergreen
 SHRP_MAINTAINER := mmtrt
 SHRP_DEVICE_TYPE := A/B
-SHRP_REC := no_recovery_partition
+SHRP_REC := /dev/block/platform/bootdevice/by-name/boot
 SHRP_REC_TYPE := SAR
 SHRP_EDL_MODE := 1
-SHRP_EXPRESS :=
+SHRP_EXPRESS := true
 SHRP_EXPRESS_USE_DATA := true
 SHRP_FLASH := 1
 SHRP_FLASH_MAX_BRIGHTNESS := 1
@@ -198,7 +198,6 @@ SHRP_NOTCH := true
 SHRP_DARK := true
 SHRP_CUSTOM_FLASHLIGHT := true
 SHRP_FONP_1 := "/sys/bus/platform/drivers/flashlights-mt6360/flashlights_mt6360/torch_brightness"
-SHRP_FLASH_MAX_BRIGHTNESS := 1
 
 # SHRP Addons
 SHRP_SKIP_DEFAULT_ADDON_1 := true
