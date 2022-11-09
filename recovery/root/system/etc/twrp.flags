@@ -5,9 +5,9 @@
 #<mnt_point>       <type>    <device>                                                 <mnt_flags and options>
 
 # Logical
-/system_root        ext4      /dev/block/bootdevice/by-name/system                     flags=display="System";logical;slotselect;backup=1;flashimg=1
-/product            ext4      /dev/block/bootdevice/by-name/product                    flags=display="Product";logical;slotselect;backup=1;flashimg=1
-/vendor             ext4      /dev/block/bootdevice/by-name/vendor                     flags=display="Vendor";logical;slotselect;backup=1;flashimg=1
+/system_root        ext4      /dev/block/bootdevice/by-name/system                     flags=display="System";logical;slotselect
+/product            ext4      /dev/block/bootdevice/by-name/product                    flags=display="Product";logical;slotselect
+/vendor             ext4      /dev/block/bootdevice/by-name/vendor                     flags=display="Vendor";logical;slotselect
 
 # Image
 /vendor_image      emmc      /dev/block/bootdevice/by-name/vendor                     flags=display="Vendor Image";backup=1;flashimg=1
