@@ -38,8 +38,8 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export LC_ALL="C"
 	export ALLOW_MISSING_DEPENDENCIES=true
 	export OF_VIRTUAL_AB_DEVICE=1
-	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
-	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
+	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/platform/bootdevice/by-name/system_root"
+	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/platform/bootdevice/by-name/vendor"
 	export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
 	export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
 	export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
