@@ -16,9 +16,10 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_evergreen.mk
+    $(LOCAL_DIR)/twrp_evergreen.mk \
+    $(LOCAL_DIR)/twrp_evergo_cn.mk \
+    $(LOCAL_DIR)/twrp_evergo_in.mk \
+    $(LOCAL_DIR)/twrp_evergo_p_in.mk \
+    $(LOCAL_DIR)/twrp_opal.mk
 
-COMMON_LUNCH_CHOICES := \
-    twrp_evergreen-user \
-    twrp_evergreen-userdebug \
-    twrp_evergreen-eng
+

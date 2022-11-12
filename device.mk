@@ -15,7 +15,15 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/xiaomi/evergreen
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+
+# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+
+# Inherit some common TWRP stuff
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 # A/B
 AB_OTA_PARTITIONS += \
@@ -93,7 +101,12 @@ PRODUCT_PACKAGES += \
     update_verifier \
     update_engine_sideload
 
-# OEM otacerts
+# otacerts
 PRODUCT_EXTRA_RECOVERY_KEYS += \
-    $(LOCAL_PATH)/security/miui_releasekey
+    $(DEVICE_PATH)/security/magisk \
+    $(DEVICE_PATH)/security/miui_releasekey
 
+# PRODUCT_RELEASE_NAME ro.twrp.device.name
+PRODUCT_PROPERTY_OVERRIDES += ro.twrp.device.name=$(PRODUCT_RELEASE_NAME)
+
+TWRP_REQUIRED_MODULES += magisk_prebuilt

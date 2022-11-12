@@ -85,13 +85,6 @@ service vibratorfeature-hal-service /vendor/bin/hw/vendor.xiaomi.hardware.vibrat
     group system input
     seclabel u:r:recovery:s0
 
-service unified-script /system/bin/unified-script.sh
-    user root
-    group root
-    disabled
-    oneshot
-    seclabel u:r:recovery:s0
-
 on property:vendor.sys.listener.registered=true
     start gatekeeper-1-0
     start keymaster-4-1
@@ -118,4 +111,3 @@ on property:twrp.modules.loaded=true
 on boot
     start boot-hal-1-2
     start health-hal-2-1
-    start unified-script

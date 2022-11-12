@@ -1,0 +1,15 @@
+cc_library_static {
+    name: "libinit_umi",
+    header_libs: [
+        "libbase_headers",
+    ],
+    cflags: [
+        "-Wall",
+//      "-DBUILD_FOR_EVERGREEN",
+    ],
+    static_libs: [
+        "libbase",
+    ],
+    srcs: ["init_evergreen.cpp"],
+    recovery_available: true,
+}

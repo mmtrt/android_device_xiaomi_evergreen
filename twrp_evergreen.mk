@@ -14,23 +14,17 @@
 # limitations under the License.
 #
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+DEVICE_PATH := device/xiaomi/evergreen
 
-# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+# Inherit from device.mk configuration
+$(call inherit-product, $(DEVICE_PATH)/device.mk)
 
-# Inherit from evergreen device
-$(call inherit-product, device/xiaomi/evergreen/device.mk)
-
-# Inherit some common TWRP stuff
-$(call inherit-product, vendor/twrp/config/common.mk)
+# Release name
+PRODUCT_RELEASE_NAME := evergreen
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := evergreen
 PRODUCT_NAME := twrp_evergreen
 PRODUCT_BRAND := POCO
-PRODUCT_MODEL := 21091116AG
+PRODUCT_MODEL := POCO M4 Pro 5G
 PRODUCT_MANUFACTURER := Xiaomi
-PRODUCT_RELEASE_NAME := POCO M4 Pro 5G

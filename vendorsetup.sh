@@ -19,27 +19,8 @@
 # 	Please maintain this if you use this script or any part of it
 #
 
-FDEVICE="evergreen"
-#set -o xtrace
-
-fox_get_target_device() {
-	local chkdev=$(echo "$BASH_SOURCE" | grep -w $FDEVICE)
-	if [ -n "$chkdev" ]; then
-		FOX_BUILD_DEVICE="$FDEVICE"
-	else
-		chkdev=$(set | grep BASH_ARGV | grep -w $FDEVICE)
-		[ -n "$chkdev" ] && FOX_BUILD_DEVICE="$FDEVICE"
-	fi
-}
-
-if [ -z "$1" ] && [ -z "$FOX_BUILD_DEVICE" ]; then
-	fox_get_target_device
-fi
-
 # Dirty Fix: Only declare orangefox vars when needed
 if [ -f "$(gettop)/bootable/recovery/orangefox.cpp" ]; then
-	echo -e "\x1b[96m[INFO]: Setting up OrangeFox build vars for evergreen...\x1b[m"
-	if [ "$1" = "$FDEVICE" ] || [  "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 		# Version / Maintainer infos
 		export OF_MAINTAINER="mmtrt"
 		export FOX_VERSION=R11.1_1
@@ -48,7 +29,6 @@ if [ -f "$(gettop)/bootable/recovery/orangefox.cpp" ]; then
 		# Device info
 		export OF_AB_DEVICE=1
 		export OF_VIRTUAL_AB_DEVICE=1
-		export TARGET_DEVICE_ALT="evergreen, evergo, opal"
 		
 		# OTA / DM-Verity / Encryption
 		export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
@@ -73,50 +53,8 @@ if [ -f "$(gettop)/bootable/recovery/orangefox.cpp" ]; then
 		# Other OrangeFox configs
 		export OF_ENABLE_LPTOOLS=1
 		export OF_ALLOW_DISABLE_NAVBAR=0
-        export OF_QUICK_BACKUP_LIST="/boot;/data;"
+		export OF_QUICK_BACKUP_LIST="/boot;/data;"
 		export FOX_BUGGED_AOSP_ARB_WORKAROUND="1546300800" # Tue Jan 1 2019 00:00:00 GMT
 		export FOX_DELETE_AROMAFM=1
-		export FOX_USE_SPECIFIC_MAGISK_ZIP="$(gettop)/device/xiaomi/evergreen/Magisk/Magisk.zip"
-
-        export BUNDLED_MAGISK_VER="25.2"
-        export BUNDLED_MAGISK_SUM="0bdc32918b6ea502dca769b1c7089200da51ea1def170824c2812925b426d509" # Sha256 sum of the prebuilt magisk
-
-            if [ -f "${FOX_USE_SPECIFIC_MAGISK_ZIP}" -a "$(sha256sum "${FOX_USE_SPECIFIC_MAGISK_ZIP}" 2>/dev/null | awk '{print $1}')" != "${BUNDLED_MAGISK_SUM}" ]
-            then
-                echo -e "\e[96m[INFO]: Removing invalid magisk zip\e[m"
-                rm -v "${FOX_USE_SPECIFIC_MAGISK_ZIP}"
-            fi
-
-        if [[ ! -f "${FOX_USE_SPECIFIC_MAGISK_ZIP}" ]]
-        then
-            # Download prebuilt magisk for OrangeFox builds
-            echo -e "\e[96m[INFO]: Downloading Magisk v${BUNDLED_MAGISK_VER}\e[m"
-            
-            if [[ "$(command -v "curl")" ]]
-            then
-                if [[ ! -d "$(dirname "${FOX_USE_SPECIFIC_MAGISK_ZIP}")" ]]
-                then
-                    mkdir -p "$(dirname "${FOX_USE_SPECIFIC_MAGISK_ZIP}")"
-                fi
-
-                # Download magisk and verify it
-                curl -L --progress-bar "https://github.com/topjohnwu/Magisk/releases/download/v${BUNDLED_MAGISK_VER}/Magisk-v${BUNDLED_MAGISK_VER}.apk" -o "${FOX_USE_SPECIFIC_MAGISK_ZIP}"
-                DOWNLOADED_SUM="$(sha256sum "${FOX_USE_SPECIFIC_MAGISK_ZIP}" | awk '{print $1}')"
-                
-                if [[ "${DOWNLOADED_SUM}" != "${BUNDLED_MAGISK_SUM}" ]]
-                then
-                    echo -e "\e[91m[ERROR]: Donwloaded Magisk ZIP seems *corrupted*, removing it to protect user's safety\e[m"
-                    rm "${FOX_USE_SPECIFIC_MAGISK_ZIP}"
-                    unset "FOX_USE_SPECIFIC_MAGISK_ZIP"
-                else
-                    echo -e "\e[96m[INFO]: Downloaded Magisk v${BUNDLED_MAGISK_VER}\e[m"
-                fi
-            else
-                # Curl is supposed to be installed according to "Establishing a build environnement" section in AOSP docs
-                # If it isn't, warn the builder about it and fallback to default Magisk ZIP
-                echo -e "\e[91m[ERROR]: Curl not found!\e[m"
-                unset "FOX_USE_SPECIFIC_MAGISK_ZIP"
-            fi
-        fi
-    fi
 fi
+
