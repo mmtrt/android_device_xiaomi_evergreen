@@ -115,13 +115,6 @@ on property:twrp.all.users.decrypted=true
 on property:twrp.modules.loaded=true
     start vibratorfeature-hal-service
 
-# Fix flashlight on orangefox
-on property:ro.orangefox.boot=1
-    mkdir -p /system/flashlight
-    write /system/flashlight/max_brightness "208"
-    symlink /sys/bus/platform/drivers/flashlights-mt6360/flashlights_mt6360/torch_brightness /system/flashlight/brightness
-
-
 on boot
     start boot-hal-1-2
     start health-hal-2-1
