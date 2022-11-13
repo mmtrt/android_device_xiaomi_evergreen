@@ -134,7 +134,7 @@ TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
-# TW_DEVICE_VERSION := rc1
+TW_DEVICE_VERSION := rainbow
 TW_LOAD_VENDOR_MODULES := "haptic.ko"
 TW_EXTRA_LANGUAGES := true
 TW_INCLUDE_NTFS_3G := true
