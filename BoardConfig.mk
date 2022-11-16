@@ -123,10 +123,6 @@ TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_LIBRESETPROP :=true
 TW_INCLUDE_REPACKTOOLS := true
 
-# Haptic
-TW_SUPPORT_INPUT_AIDL_HAPTICS :=true
-TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
-
 # TWRP Configuration
 TW_THEME := portrait_hdpi
 TW_DEVICE_VERSION := rainbow
