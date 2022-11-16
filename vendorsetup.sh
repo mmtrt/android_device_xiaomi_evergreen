@@ -43,8 +43,8 @@ if [ -f "$(gettop)/bootable/recovery/orangefox.cpp" ]; then
 		# Version / Maintainer infos
 		export OF_MAINTAINER="mmtrt"
 		export FOX_VERSION=R11.1_1
-		export FOX_BUILD_TYPE="Beta"
-		export FOX_VARIANT="S"
+		export FOX_BUILD_TYPE="Unofficial"
+        export FOX_VARIANT="R"
 
 		# ensure that /sdcard is bind-unmounted before f2fs data repair or format
 		export OF_UNBIND_SDCARD_F2FS=1
@@ -62,7 +62,7 @@ if [ -f "$(gettop)/bootable/recovery/orangefox.cpp" ]; then
 		export OF_DONT_PATCH_ON_FRESH_INSTALLATION=1
 		export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
 		export OF_KEEP_DM_VERITY_FORCED_ENCRYPTION=1
-		export OF_SKIP_FBE_DECRYPTION_SDKVERSION=34 # Don't try to decrypt A14(?)
+		export OF_SKIP_FBE_DECRYPTION_SDKVERSION=31 # Don't try to decrypt A12
 		export OF_SKIP_DECRYPTED_ADOPTED_STORAGE=1
 		export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
 		export FOX_USE_BASH_SHELL=1

@@ -34,23 +34,55 @@ on post-fs
     symlink /dev/block/mapper/pl_b /dev/block/platform/bootdevice/by-name/preloader_raw_b
 
 on post-fs-data
-    chown system system /sys/bus/i2c/drivers/aw8697_haptic/2-005a/f0_save
-    chown system system /sys/bus/i2c/drivers/aw8697_haptic/2-005a/osc_save
-    chown system system /sys/bus/i2c/drivers/aw8697_haptic/3-005a/osc_save
-    chown system system /sys/bus/i2c/drivers/aw8697_haptic/2-005a/custom_wave
-    chmod 0666  /sys/bus/i2c/drivers/aw8697_haptic/2-005a/custom_wave
-    chown system system /sys/bus/i2c/drivers/aw8697_haptic/2-005a/custom_wave
-    chmod 0666  /sys/bus/i2c/drivers/aw8697_haptic/2-005a/custom_wave
-    chown system system /sys/bus/i2c/drivers/aw8697_haptic/3-005a/custom_wave
-    chmod 0666  /sys/bus/i2c/drivers/aw8697_haptic/3-005a/custom_wave
-    chmod 0666 /sys/class/qcom-haptics/lra_calibration
     chown system system /sys/bus/i2c/drivers/aw8697_haptic/0-005a/custom_wave
     chmod 0666  /sys/bus/i2c/drivers/aw8697_haptic/0-005a/custom_wave
+
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/1-005a/custom_wave
+    chmod 0666  /sys/bus/i2c/drivers/aw8697_haptic/1-005a/custom_wave
+
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/2-005a/f0_save
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/2-005a/osc_save
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/2-005a/custom_wave
+    chmod 0666  /sys/bus/i2c/drivers/aw8697_haptic/2-005a/custom_wave
+
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/3-005a/osc_save
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/3-005a/custom_wave
+    chmod 0666  /sys/bus/i2c/drivers/aw8697_haptic/3-005a/custom_wave
+
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/7-005a/f0_save
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/7-005a/f0_cali
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/7-005a/osc_save
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/7-005a/custom_wave
+    chmod 0666  /sys/bus/i2c/drivers/aw8697_haptic/7-005a/custom_wave
+    chown system system /sys/bus/i2c/drivers/awinic_haptic/9-005a/f0_save
+    chown system system /sys/bus/i2c/drivers/awinic_haptic/9-005a/osc_save
+    chown system system /sys/bus/i2c/drivers/awinic_haptic/9-005a/custom_wave
+    chown system system /sys/bus/i2c/drivers/awinic_haptic/9-005a/f0_cali
+    chmod 0666  /sys/bus/i2c/drivers/awinic_haptic/9-005a/custom_wave
+
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/9-005a/f0_save
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/9-005a/f0_cali
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/9-005a/osc_save
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/9-005a/custom_wave
+    chmod 0666  /sys/bus/i2c/drivers/aw8697_haptic/9-005a/custom_wave
+
+    chmod 0666 /sys/class/qcom-haptics/lra_calibration
     chmod 0666 /sys/class/qcom-haptics/lra_impedance
-    chown system system /sys/bus/i2c/drivers/awinic_haptic/1-005a/f0_save
-    chown system system /sys/bus/i2c/drivers/awinic_haptic/1-005a/osc_save
-    chown system system /sys/bus/i2c/drivers/awinic_haptic/1-005a/custom_wave
-    chmod 0666  /sys/bus/i2c/drivers/awinic_haptic/1-005a/custom_wave
+
+    chown system system /sys/bus/i2c/drivers/aw8624_haptic/2-005a/f0_save
+    chown system system /sys/bus/i2c/drivers/aw8624_haptic/2-005a/osc_save
+    chown system system /sys/bus/i2c/drivers/aw8624_haptic/2-005a/custom_wave
+    chmod 0666  /sys/bus/i2c/drivers/aw8624_haptic/2-005a/custom_wave
+
+    chown system system /sys/bus/i2c/drivers/awinic_haptic/2-005a/f0_save
+    chown system system /sys/bus/i2c/drivers/awinic_haptic/2-005a/osc_save
+    chown system system /sys/bus/i2c/drivers/awinic_haptic/2-005a/custom_wave
+    chmod 0666  /sys/bus/i2c/drivers/awinic_haptic/2-005a/custom_wave
+
+    chown system system /sys/bus/i2c/drivers/awinic_haptic/2-0058/f0_save
+    chown system system /sys/bus/i2c/drivers/awinic_haptic/2-0058/osc_save
+    chown system system /sys/bus/i2c/drivers/awinic_haptic/2-0058/custom_wave
+    chmod 0666  /sys/bus/i2c/drivers/awinic_haptic/2-0058/custom_wave
 
 on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
     install_keyring
@@ -64,15 +96,12 @@ service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
     seclabel u:r:recovery:s0
 
 service gatekeeper-1-0 /system/bin/android.hardware.gatekeeper@1.0-service
-    interface android.hardware.gatekeeper@1.0::IGatekeeper default
     user root
     group root
     disabled
     seclabel u:r:recovery:s0
 
-service keymaster-4-1 /system/bin/android.hardware.keymaster@4.1-service.beanpod
-    interface android.hardware.keymaster@4.0::IKeymasterDevice default
-    interface android.hardware.keymaster@4.1::IKeymasterDevice default
+service keymaster-4-0 /system/bin/android.hardware.keymaster@4.0-service.beanpod
     user root
     group root drmrpc
     oneshot    
@@ -94,17 +123,17 @@ service unified-script /system/bin/unified-script.sh
 
 on property:vendor.sys.listener.registered=true
     start gatekeeper-1-0
-    start keymaster-4-1
+    start keymaster-4-0
     start gatekeeper-1-0
 
 on property:ro.crypto.state=unsupported
     stop teei_daemon
-    stop keymaster-4-1
+    stop keymaster-4-0
     stop gatekeeper-1-0
     
 on property:ro.crypto.state=unencrypted
     stop teei_daemon
-    stop keymaster-4-1
+    stop keymaster-4-0
     stop gatekeeper-1-0
         
 on property:twrp.all.users.decrypted=true
@@ -116,6 +145,6 @@ on property:twrp.modules.loaded=true
     start vibratorfeature-hal-service
 
 on boot
-    start boot-hal-1-2
+    start boot-hal-1-1
     start health-hal-2-1
     start unified-script
