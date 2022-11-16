@@ -95,6 +95,14 @@ service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
     oneshot
     seclabel u:r:recovery:s0
 
+service boot-hal-1-1 /system/bin/android.hardware.boot@1.1-service
+    interface android.hardware.boot@1.0::IBootControl default
+    interface android.hardware.boot@1.1::IBootControl default
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
 service gatekeeper-1-0 /system/bin/android.hardware.gatekeeper@1.0-service
     interface android.hardware.gatekeeper@1.0::IGatekeeper default
     user root
@@ -132,17 +140,23 @@ on property:ro.crypto.state=unsupported
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
-    
+    stop servicemanager
+    stop hwservicemanager
+
 on property:ro.crypto.state=unencrypted
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
+    stop servicemanager
+    stop hwservicemanager
         
 on property:twrp.all.users.decrypted=true
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
-   
+    stop servicemanager
+    stop hwservicemanager
+
 on property:twrp.modules.loaded=true
     start vibratorfeature-hal-service
 
