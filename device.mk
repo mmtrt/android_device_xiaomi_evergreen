@@ -90,15 +90,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
 
-# Gatekeeper
-PRODUCT_PACKAGES += \
-	android.hardware.gatekeeper@1.0-service \
-	android.hardware.gatekeeper@1.0-impl
-
-PRODUCT_COPY_FILES += \
-	$(OUT_DIR)/target/product/evergreen/vendor/bin/hw/android.hardware.gatekeeper@1.0-service:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/android.hardware.gatekeeper@1.0-service \
-	$(OUT_DIR)/target/product/evergreen/vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl.so
-
 PRODUCT_PACKAGES += \
     otapreopt_script \
     cppreopts.sh \
