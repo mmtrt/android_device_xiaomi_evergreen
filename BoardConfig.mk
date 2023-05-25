@@ -125,7 +125,7 @@ TW_INCLUDE_REPACKTOOLS := true
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
-TW_DEVICE_VERSION := rainbow
+TW_DEVICE_VERSION := everpal
 #TW_LOAD_VENDOR_MODULES := "haptic.ko"
 TW_EXTRA_LANGUAGES := true
 TW_INCLUDE_NTFS_3G := true
