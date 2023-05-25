@@ -33,7 +33,7 @@ on post-fs
     symlink /dev/block/mapper/pl_a /dev/block/platform/bootdevice/by-name/preloader_raw_a
     symlink /dev/block/mapper/pl_b /dev/block/platform/bootdevice/by-name/preloader_raw_b
 
-on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
+on fs
     install_keyring
 
 service keystore_auth /system/bin/keystore_auth
