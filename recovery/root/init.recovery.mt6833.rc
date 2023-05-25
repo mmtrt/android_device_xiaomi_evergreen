@@ -80,7 +80,7 @@ service unified-script /system/bin/unified-script.sh
     seclabel u:r:recovery:s0
 
 on property:vendor.sys.listener.registered=true
-    start gatekeeper-1-0
+    start teei_daemon
     start keymaster-4-0
     start gatekeeper-1-0
 
