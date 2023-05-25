@@ -36,6 +36,19 @@ on post-fs
 on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
     install_keyring
 
+service keystore_auth /system/bin/keystore_auth
+    user system
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+service keystore /system/bin/keystore /tmp/misc/keystore
+    user root
+    group root drmrpc readproc log
+    disabled
+    seclabel u:r:recovery:s0
+
 service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
     class main
     user root
